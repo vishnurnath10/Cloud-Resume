@@ -1,0 +1,153 @@
+:root{
+  --bg:#f3f4f6;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#4b5563;
+  --line:#e5e7eb;
+  --link:#2563eb;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: "Times New Roman", Times, serif;
+  line-height:1.45;
+}
+
+.page{
+  max-width: 980px;
+  margin: 28px auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+}
+
+.header{
+  padding-bottom: 4px;
+  /* border-bottom: 1px solid var(--line); */
+   text-align: center;
+}
+
+.name{
+  margin:0;
+  font-size: 34px;
+  letter-spacing: 0.2px;
+}
+
+.contact{
+  margin:8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  gap: 8px;
+  align-items:center;
+  
+}
+
+.sep{ color: #9ca3af; }
+
+a{
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover{ text-decoration: underline; }
+
+.section{
+  padding-top: 16px;
+}
+
+.section-title{
+  margin: 18px 0 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #111827;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.text{
+  margin:0;
+  color: var(--text);
+  font-size: 14.5px;
+}
+
+.item{
+  padding: 12px 0 2px;
+}
+
+.item.compact{ padding: 10px 0 0; }
+
+.item-head{
+  display:flex;
+  gap: 14px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item-title{
+  margin:0;
+  font-size: 15px;
+}
+
+.item-subtitle{
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.item-meta{
+  color: var(--muted);
+  font-size: 13.5px;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.muted{ color: var(--muted); }
+.small{ font-size: 12.5px; }
+
+.bullets{
+  margin: 10px 0 0 18px;
+  padding: 0;
+  color: var(--text);
+  font-size: 14px;
+}
+.bullets li{ margin: 6px 0; }
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.chip{
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fafafa;
+  font-size: 13.5px;
+  color: var(--text);
+}
+
+.footer{
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+@media (max-width: 720px){
+  .page{ padding: 18px; border-radius: 12px; }
+  .name{ font-size: 28px; }
+  .item-head{ flex-direction: column; }
+  .item-meta{ white-space: normal; }
+  .grid{ grid-template-columns: 1fr; }
+}
