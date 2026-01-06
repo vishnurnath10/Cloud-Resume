@@ -183,7 +183,7 @@
   document.getElementById("year").innerText = new Date().getFullYear();
 
   
-  fetch("https://zxzqaxpwrbkugylwgqbp5w64640xlazy.lambda-url.us-east-2.on.aws/")
+  fetch("https://i6pa45vqfdx2ge6no2fmj3hfma0ihesd.lambda-url.us-east-2.on.aws/")
     .then(r => r.json())
     .then(d => document.getElementById("visitorCount").innerText = d.count)
     .catch(() => document.getElementById("visitorCount").innerText = "N/A");
