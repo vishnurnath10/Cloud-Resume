@@ -25,7 +25,7 @@ jobs:
 
       - name: Sync site to S3
         run: |
-          aws s3 sync . s3://vishnu-cloud-resume-bucket-2026 --delete --exclude ".git/*" --exclude ".github/*"
+          aws s3 sync . s3://vishnu-cloud-resume-bucket-2026 --delete --exclude ".git/*" --exclude ".github/*"--exclude ".gitignore"
 
       - name: Invalidate CloudFront cache
         run: |
