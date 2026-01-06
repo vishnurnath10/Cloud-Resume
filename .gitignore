@@ -5,7 +5,7 @@ terraform.tfstate.*
 crash.log
 
 
-.aws/
+**/.aws/
 *.pem
 *.key
 
