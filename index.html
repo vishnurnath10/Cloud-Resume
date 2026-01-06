@@ -180,5 +180,22 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+  <p>Visitors: <span id="visitorCount">Loading...</span></p>
+
+<script>
+  const functionUrl = "https://zxzqaxpwrbkugylwgqbp5w64640xlazy.lambda-url.us-east-2.on.aws/";
+
+ 
+  fetch(functionUrl)
+    .then(response => response.json())   
+    .then(data => {
+      document.getElementById("visitorCount").textContent = data.count;
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+      document.getElementById("visitorCount").textContent = "N/A";
+    });
+</script>
+
 </body>
 </html>
