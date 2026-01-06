@@ -14,7 +14,6 @@
       <div class="name-block">
         <h1 class="name">VISHNU REGHU NATH</h1>
         <p class="contact">
-          <span class="sep">|</span>
           <a href="mailto:vishnurnath367@gmail.com">vishnurnath367@gmail.com</a>
           <span class="sep">|</span>
           <span>Toronto, ON, Canada</span>
@@ -173,29 +172,19 @@
     </section>
 
     <footer class="footer">
-      <p class="muted small">Last updated: <span id="year"></span></p>
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  <p>Visitors: <span id="visitorCount">Loading...</span></p>
+  <p class="muted small">
+    Visitors: <span id="visitorCount">...</span> •
+    Last updated: <span id="year">...</span>
+  </p>
+</footer>
 
 <script>
-  const functionUrl = "https://zxzqaxpwrbkugylwgqbp5w64640xlazy.lambda-url.us-east-2.on.aws/";
-
  
-  fetch(functionUrl)
-    .then(response => response.json())   
-    .then(data => {
-      document.getElementById("visitorCount").textContent = data.count;
-    })
-    .catch(error => {
-      console.error("Fetch error:", error);
-      document.getElementById("visitorCount").textContent = "N/A";
-    });
-</script>
+  document.getElementById("year").innerText = new Date().getFullYear();
 
-</body>
-</html>
+  
+  fetch("https://zxzqaxpwrbkugylwgqbp5w64640xlazy.lambda-url.us-east-2.on.aws/")
+    .then(r => r.json())
+    .then(d => document.getElementById("visitorCount").innerText = d.count)
+    .catch(() => document.getElementById("visitorCount").innerText = "N/A");
+</script>
