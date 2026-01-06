@@ -20,7 +20,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::290158030627
+          role-to-assume: arn:aws:iam::290158030627:role/AdministratorAccess
           aws-region: us-east-2
 
       - name: Sync site to S3
