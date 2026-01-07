@@ -179,15 +179,13 @@
 </footer>
 
 <script>
- 
   document.getElementById("year").innerText = new Date().getFullYear();
 
-  
   fetch("https://ilr3u6i4nzyvml4f5xrepltmya0emwgz.lambda-url.us-east-2.on.aws/")
     .then(r => r.json())
     .then(d => {
-      const parsed = JSON.parse(d.body);
-      document.getElementById("visitorCount").innerText = parsed.count;
+      const { count } = JSON.parse(d.body);
+      document.getElementById("visitorCount").innerText = count;
     })
     .catch(() => {
       document.getElementById("visitorCount").innerText = "N/A";
