@@ -110,6 +110,13 @@ resource "aws_lambda_function_url" "counter_url" {
     allow_headers = ["content-type"]
   }
 }
+resource "aws_lambda_permission" "allow_public_function_url" {
+  statement_id           = "AllowPublicInvokeFunctionUrl"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.counter.function_name
+  principal              = "*"
+  function_url_auth_type = "NONE"
+}
 
 output "counter_url" {
   value = aws_lambda_function_url.counter_url.function_url
