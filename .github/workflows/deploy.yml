@@ -23,9 +23,9 @@ jobs:
           role-to-assume: arn:aws:iam::290158030627:role/AdministratorAccess
           aws-region: us-east-2
 
-      - name: Sync site to S3
+      - name: Sync to S3
         run: |
-          aws s3 sync . s3://vishnu-cloud-resume-bucket-2026 --delete --exclude ".git/*" --exclude ".github/*" --exclude ".gitignore" --exclude "terraform/*" --exclude "README.md" --exclude "LICENSE" --exclude "*.yml" --exclude "*.tf" --exclude "*.py" --exclude "zip/*"
+          aws s3 sync . s3://vishnu-resume-bucket-2026 --delete --exclude ".git/*" --exclude ".github/*" --exclude ".gitignore" --exclude "terraform/*" --exclude "README.md" --exclude "LICENSE" --exclude "*.yml" --exclude "*.tf" --exclude "*.py" --exclude "zip/*"
 
       - name: Invalidate CloudFront cache
         run: |
