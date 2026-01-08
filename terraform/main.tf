@@ -113,10 +113,11 @@ resource "aws_lambda_function_url" "counter_url" {
 resource "aws_lambda_permission" "allow_public_function_url" {
   statement_id           = "AllowPublicInvokeFunctionUrl"
   action                 = "lambda:InvokeFunctionUrl"
-  function_name          = aws_lambda_function.counter.function_name
+  function_name          = aws_lambda_function.counter.arn
   principal              = "*"
   function_url_auth_type = "NONE"
   depends_on = [ aws_lambda_function_url.counter_url ]
+  
 }
 
 output "counter_url" {
