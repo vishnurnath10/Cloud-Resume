@@ -181,7 +181,7 @@
 <script>
   document.getElementById("year").innerText = new Date().getFullYear();
 
-  fetch("https://d5hzd2vsd3evfh4crm6f5hjg6e0ygdlv.lambda-url.us-east-2.on.aws/")
+  fetch("https://snzl52e6aekndlroheh5zmdjly0baxgw.lambda-url.us-east-2.on.aws/")
     .then(r => r.json())
     .then(d => {
       const { count } = JSON.parse(d.body);
