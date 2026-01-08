@@ -106,7 +106,7 @@ resource "aws_lambda_function_url" "counter_url" {
 
   cors {
     allow_origins = ["*"]
-    allow_methods = ["GET", "OPTIONS"]
+    allow_methods = ["GET"]
     allow_headers = ["content-type"]
   }
 }
