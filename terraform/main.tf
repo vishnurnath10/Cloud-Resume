@@ -105,11 +105,20 @@ resource "aws_lambda_function_url" "counter_url" {
   authorization_type = "NONE"
 
   cors {
-    allow_origins = ["*"]
-    allow_methods = ["*"]
+    allow_origins = ["https://d2edhomp27yh5b.cloudfront.net"]
+    allow_methods = ["GET"]
     allow_headers = ["*"]
   }
+  
 }
+resource "aws_lambda_permission" "allow_public_function_url" {
+  statement_id           = "AllowPublicInvokeFunctionUrl"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.counter.function_name
+  principal              = "*"
+  function_url_auth_type = "NONE"
+}
+
 
 output "counter_url" {
   value = aws_lambda_function_url.counter_url.function_url
