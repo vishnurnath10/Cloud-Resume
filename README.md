@@ -81,36 +81,24 @@ I wanted a project that demonstrates:
 This project helped me better understand how cloud infrastructure, security, and automation fit together in a real world setup.
 
 ## Architecture
+```
+┌─────────────┐
+│ User Browser│
+└──────┬──────┘
+       │
+       ├─── HTTPS ────► CloudFront ────OAC────► S3 Bucket
+       │                                         (HTML, CSS)
+       │
+       └─── Fetch ────► Lambda ────Read/Write──► DynamoDB
+            Count        Function                 (Visitor Count)
+```
 
-┌───────────────┐
-│  User Browser │
-└───────┬───────┘
-        │
-        ├─────── (1) HTTPS Request ──────────►┌──────────────────┐
-        │                                      │  CloudFront CDN  │
-        │                                      │  (Distribution)  │
-        │                                      └────────┬─────────┘
-        │                                               │
-        │                              (2) Origin Access Control (OAC)
-        │                                               │
-        │                                               ▼
-        │                                      ┌──────────────────┐
-        │                                      │   S3 Bucket      │
-        │                                      │  (Private)       │
-        │                                      │ - index.html     │
-        │                                      │ - style.css      │
-        │                                      └──────────────────┘
-        │
-        └─────── (3) Fetch Visitor Count ────►┌──────────────────┐
-                  (Function URL - HTTPS)       │  Lambda Function │
-                                                │ (counter-function)│
-                                                └────────┬─────────┘
-                                                         │
-                                            (4) GetItem / PutItem
-                                                         │
-                                                         ▼
-                                                ┌──────────────────┐
-                                                │  DynamoDB Table  │
-                                                │  - Id: "home"    │
-                                                │  - count: N      │
-                                                └──────────────────┘
+**Flow:**
+1. User requests resume → CloudFront serves static files from private S3
+2. JavaScript fetches visitor count → Lambda Function URL (HTTPS)
+3. Lambda increments count → DynamoDB stores the value
+4. Count displayed on resume page
+
+**Infrastructure:** Terraform manages S3, CloudFront, Lambda, DynamoDB, IAM roles
+
+                                               
