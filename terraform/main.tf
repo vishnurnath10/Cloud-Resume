@@ -104,11 +104,6 @@ resource "aws_lambda_function_url" "counter_url" {
   function_name      = aws_lambda_function.counter.function_name
   authorization_type = "NONE"
 
-  cors {
-    allow_origins = ["*"]
-    allow_methods = ["*"]
-    allow_headers = ["content-type", "authorization"]
-  }
 }
 
 output "counter_url" {
