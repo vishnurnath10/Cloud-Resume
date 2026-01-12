@@ -107,17 +107,8 @@ resource "aws_lambda_function_url" "counter_url" {
   cors {
     allow_origins = ["*"]
     allow_methods = ["*"]
-    allow_headers = ["content-type","authorization"]
+    allow_headers = ["content-type", "authorization"]
   }
-}
-resource "aws_lambda_permission" "allow_public_function_url" {
-  statement_id           = "AllowPublicInvokeFunctionUrl"
-  action                 = "lambda:InvokeFunctionUrl"
-  function_name          = aws_lambda_function.counter.arn
-  principal              = "*"
-  function_url_auth_type = "NONE"
-  depends_on = [ aws_lambda_function_url.counter_url ]
-  
 }
 
 output "counter_url" {
