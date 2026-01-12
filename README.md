@@ -71,5 +71,46 @@ The goal of this project is to show practical cloud knowledge, not just theory.
 
 ---
 
-## Repository Structure
+## Why I built this
 
+I wanted a project that demonstrates:
+- Real AWS services working together
+- Secure access patterns (private S3 + CloudFront)
+- Automation using CI/CD
+
+This project helped me better understand how cloud infrastructure, security, and automation fit together in a real world setup.
+
+## Architecture
+
+┌───────────────┐
+│  User Browser │
+└───────┬───────┘
+        │
+        ├─────── (1) HTTPS Request ──────────►┌──────────────────┐
+        │                                      │  CloudFront CDN  │
+        │                                      │  (Distribution)  │
+        │                                      └────────┬─────────┘
+        │                                               │
+        │                              (2) Origin Access Control (OAC)
+        │                                               │
+        │                                               ▼
+        │                                      ┌──────────────────┐
+        │                                      │   S3 Bucket      │
+        │                                      │  (Private)       │
+        │                                      │ - index.html     │
+        │                                      │ - style.css      │
+        │                                      └──────────────────┘
+        │
+        └─────── (3) Fetch Visitor Count ────►┌──────────────────┐
+                  (Function URL - HTTPS)       │  Lambda Function │
+                                                │ (counter-function)│
+                                                └────────┬─────────┘
+                                                         │
+                                            (4) GetItem / PutItem
+                                                         │
+                                                         ▼
+                                                ┌──────────────────┐
+                                                │  DynamoDB Table  │
+                                                │  - Id: "home"    │
+                                                │  - count: N      │
+                                                └──────────────────┘
