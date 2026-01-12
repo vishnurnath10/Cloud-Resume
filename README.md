@@ -102,3 +102,4 @@ This project helped me better understand how cloud infrastructure, security, and
 **Infrastructure:** Terraform manages S3, CloudFront, Lambda, DynamoDB, IAM roles
 
                                                
+Last updated: January 2026 , 3:59pm EST 1/12/2026 .
