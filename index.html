@@ -183,10 +183,12 @@
 
   fetch("https://5ed6kfsqz3646nfjxb7qimdsge0fovuq.lambda-url.us-east-2.on.aws/")
     .then(r => r.json())
-   .then(d => {
-  document.getElementById("visitorCount").innerText = d.count;
-})
-    .catch(() => {
+    .then(d => {
+      document.getElementById("visitorCount").innerText = d.count;
+    })
+    .catch((e) => {
+      console.error(e);
       document.getElementById("visitorCount").innerText = "N/A";
     });
 </script>
+
