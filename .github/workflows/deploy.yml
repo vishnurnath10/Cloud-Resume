@@ -21,7 +21,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::290158030627:role/cloud-resume
+          role-to-assume: arn:aws:iam::2:role/cloud-resume
           aws-region: us-east-2
 
       - name: Sync to S3
@@ -30,4 +30,4 @@ jobs:
 
       - name: Invalidate CloudFront cache
         run: |
-          aws cloudfront create-invalidation --distribution-id EII7GWJY28BIO --paths "/*"
+          aws cloudfront create-invalidation --distribution-id EII --paths "/*"
